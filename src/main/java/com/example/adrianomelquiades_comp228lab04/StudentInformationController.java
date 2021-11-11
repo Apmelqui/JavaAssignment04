@@ -27,13 +27,10 @@ public class StudentInformationController implements Initializable {
     @FXML private CheckBox volunteerWork;
 
 
-    String program = "The program is: ";
-    String checkBoxValue = "";
+    String program = "";
     String checkBoxCouncil = "";
     String checkBoxVolunteer = "";
     ArrayList<String> selectedCourses = new ArrayList<String>();
-
-
 
     public void displayInformationButtonClicked() {
 
@@ -44,19 +41,26 @@ public class StudentInformationController implements Initializable {
             checkBoxVolunteer = volunteerWork.getText();
         }
 
+        //Get Program information from radio button
+        if (businessRadioButton.isSelected()) {
+            program = "";
+            program += businessRadioButton.getText();
+            System.out.println(program);
+        } if (computerScienceRadioButton.isSelected()) {
+            program = "";
+            program += computerScienceRadioButton.getText();
+        }
 
         //Printing the student information:
-
         displayStudentInfo();
-
-
     }
 
+    //Methods:
     public void displayStudentInfo() {
 
         this.taStudentInformation.setText(tfName.getText() + ", " + tfAddress.getText() + ", " + tfProvince.getText() + ", " +
                 tfCity.getText() + ", " + tfPostalCode.getText() + ", " + tfPhoneNumber.getText() + ", " + tfEmail.getText() +
-                "\n" + program + "\nCourses: " + taCourses.getText().toString() + "\n" + checkBoxCouncil + "\n" + checkBoxVolunteer);
+                "\n\n" +"Program:\n" + program +"\n" + "\nCourses:\n" + taCourses.getText().toString() + "\nExtra Activities:\n" + checkBoxCouncil + "\n" + checkBoxVolunteer);
     }
 
     public void clearButtonClicked() {
@@ -69,15 +73,13 @@ public class StudentInformationController implements Initializable {
         tfPhoneNumber.clear();
         tfEmail.clear();
         taCourses.clear();
-        computerScienceRadioButton.setSelected(false);
-        businessRadioButton.setSelected(false);
+        //computerScienceRadioButton.setSelected(false);
+        //businessRadioButton.setSelected(false);
         cbCourses.getItems().clear();
         studentCouncil.setSelected(false);
         volunteerWork.setSelected(false);
+        loadComboBox();
     }
-
-
-
 
     public void loadComboBox() {
         //ComboBox
@@ -87,80 +89,29 @@ public class StudentInformationController implements Initializable {
             taCourses.clear();
         } if (businessRadioButton.isSelected()) {
             cbCourses.getItems().clear();
-            cbCourses.getItems().addAll("Financial Math", "Social Analysis", "Economy", "Stock analysis");
+            cbCourses.getItems().addAll("Finance", "Marketing", "Macroeconomics", "Supply Chain");
             taCourses.clear();
         }
     }
-
-
-
-
-    //
-    //System.out.println(selectedCourses);
-
-//    taCourses.appendText(selectedCourses);
-
-
-        /*
-        System.out.println("load Combobox method");
-        cbCourses.getItems().clear();
-
-        String selectedCourses = "";
-
-        if (computerScienceRadioButton.isSelected()){
-            cbCourses.getItems().clear();
-            program = "The program is: ";
-            cbCourses.getItems().addAll("Java", "Python", "C#", "JavaScript");
-            program += "Computer Science";
-            this.taCourses.setText(cbCourses.getValue().toString());
-            //selectedCourses +=
-        } if (businessRadioButton.isSelected()){
-            cbCourses.getItems().clear();
-            program = "The program is: ";
-            cbCourses.getItems().addAll("Financial Math", "Social Analysis", "Economy", "Stock analysis");
-            program += "Business";
-            this.taCourses.setText(cbCourses.getValue().toString());
-        }
-
-
-         */
-
-
-
-
-    public void populateComboBox() {
-        String value = cbCourses.getValue().toString();
-        selectedCourses.add(value);
-    }
-
-    public void displayComboBoxValuesOnTextAreaCourses(ArrayList<String> selectedCourses) {
-        for (int i = 0; i < selectedCourses.size(); i++) {
-            taCourses.setText(selectedCourses.get(i));
-        }
-    }
-
-    /*
-    delete
-    //Populate comboBox:
-        cbCourses.setOnAction((event) -> {
-
-
-        selectedCourses += cbCourses.getValue().toString();
-        System.out.println(selectedCourses);
-        this.taCourses.setText(selectedCourses);
-
-
-
-    });
-    delete
-     */
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadComboBox();
 
+        //Adding courses into the Text Area:
+        cbCourses.setOnAction((event) -> {
+            if (cbCourses.getValue() != null) {
+                String course = cbCourses.getValue().toString();
+                if (taCourses.getText().indexOf(course) !=-1) {
+                    System.out.println("This course has already been added.");
+                } else {
+                    taCourses.appendText(course + "\n");
+                }
+            }
+        });
     }
+
 }
 
 

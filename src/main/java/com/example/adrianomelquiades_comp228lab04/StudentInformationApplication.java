@@ -9,7 +9,7 @@ public class StudentInformationApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(StudentInformationApplication.class.getResource("student_information-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 800, 680);
         stage.setTitle("Student Information");
         stage.setScene(scene);
         stage.show();
@@ -19,12 +19,4 @@ public class StudentInformationApplication extends Application {
         launch();
         System.out.println("launch main method");
     }
-
-
-
-
-
-
-
-
 }
