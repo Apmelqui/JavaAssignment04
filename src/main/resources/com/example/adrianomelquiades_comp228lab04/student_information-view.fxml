@@ -17,7 +17,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.adrianomelquiades_comp228lab04.StudentInformationController">
    <children>
-      <TextArea fx:id="StudentInformationLabel" layoutX="40.0" layoutY="383.0" prefHeight="109.0" prefWidth="643.0" />
+      <TextArea fx:id="taStudentInformation" layoutX="40.0" layoutY="383.0" prefHeight="109.0" prefWidth="643.0" />
       <RadioButton fx:id="computerScienceRadioButton" layoutX="467.0" layoutY="110.0" mnemonicParsing="false" onAction="#loadComboBox" prefHeight="18.0" prefWidth="150.0" selected="true" text="Computer Science">
          <toggleGroup>
             <ToggleGroup fx:id="course" />
@@ -59,7 +59,7 @@
       <Button layoutX="362.0" layoutY="343.0" mnemonicParsing="false" onAction="#clearButtonClicked" text="Clear" />
       <TextArea fx:id="taCourses" layoutX="467.0" layoutY="195.0" prefHeight="91.0" prefWidth="217.0" />
       <CheckBox fx:id="volunteerWork" layoutX="467.0" layoutY="324.0" mnemonicParsing="false" text="Volunteer Work" />
-      <CheckBox fx:id="studentConcil" layoutX="467.0" layoutY="298.0" mnemonicParsing="false" text="Student Concil" />
+      <CheckBox fx:id="studentCouncil" layoutX="467.0" layoutY="298.0" mnemonicParsing="false" text="Student Council" />
       <ImageView fitHeight="79.0" fitWidth="81.0" layoutX="39.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="69.0" fitWidth="66.0" layoutX="26.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
