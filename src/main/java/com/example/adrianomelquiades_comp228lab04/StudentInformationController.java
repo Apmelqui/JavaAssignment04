@@ -30,8 +30,8 @@ public class StudentInformationController implements Initializable {
     String program = "";
     String checkBoxCouncil = "";
     String checkBoxVolunteer = "";
-    ArrayList<String> selectedCourses = new ArrayList<String>();
 
+    //Main button
     public void displayInformationButtonClicked() {
 
         //Get checkBox value
@@ -56,13 +56,17 @@ public class StudentInformationController implements Initializable {
     }
 
     //Methods:
+
+    //Display info
     public void displayStudentInfo() {
 
         this.taStudentInformation.setText(tfName.getText() + ", " + tfAddress.getText() + ", " + tfProvince.getText() + ", " +
                 tfCity.getText() + ", " + tfPostalCode.getText() + ", " + tfPhoneNumber.getText() + ", " + tfEmail.getText() +
-                "\n\n" +"Program:\n" + program +"\n" + "\nCourses:\n" + taCourses.getText().toString() + "\nExtra Activities:\n" + checkBoxCouncil + "\n" + checkBoxVolunteer);
+                "\n\n" +"Program:\n" + program +"\n" + "\nCourses:\n" + taCourses.getText().toString() + "\nExtra Activities:\n" +
+                checkBoxCouncil + "\n" + checkBoxVolunteer);
     }
 
+    //Clear Button
     public void clearButtonClicked() {
         taStudentInformation.clear();
         tfName.clear();
@@ -81,8 +85,8 @@ public class StudentInformationController implements Initializable {
         loadComboBox();
     }
 
+    //ComboBox
     public void loadComboBox() {
-        //ComboBox
         if (computerScienceRadioButton.isSelected()) {
             cbCourses.getItems().clear();
             cbCourses.getItems().addAll("Java", "Python", "C#", "JavaScript");
